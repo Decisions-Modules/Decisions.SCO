@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Resources>
+    <!--<ServicesDlls>
+		<string>..\..\output\binservices\Decisions.SCO.dll</string>
+    </ServicesDlls>-->
+    <CliDlls/>
+    <WebPages/>
+    <AgentDlls />
+    <InstallScript>
+    </InstallScript>
+    <SqlScripts />
+    <ObjectsToImport >
+    </ObjectsToImport>
+    <MsSqlScript>
+    </MsSqlScript>
+    <MySqlScript>
+    </MySqlScript>
+  </Resources>
+   <ImagePath>../../Content/Images/Modules/SCO.png</ImagePath>
+  <Description>Decisions SCO is a module for integrating with Microsoft System Center Orchestrator.  This module is only practically used in concert with the SCCM module.</Description>
+</CreateModuleInfo>

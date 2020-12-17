@@ -1,0 +1,59 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+		ToolsVersion="4.0" Name="SCCMCore"  DefaultTargets="BuildAll">
+
+	<PropertyGroup>
+		<Platform>AnyCPU</Platform>
+		<OutputType>Library</OutputType>
+		<RootNamespace>DecisionsSCOrchestrator</RootNamespace>
+		<AssemblyName>Decisions.SCO</AssemblyName>
+		<TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+		<TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>				
+		<LibPath>..\..\..\lib</LibPath>
+		<BuildDest>../../../output/binservices</BuildDest>
+		<OutputPath>bin\debug</OutputPath>
+		<Configuration>debug</Configuration>
+	</PropertyGroup>
+	
+	
+	<Target Name="BuildAll">
+     <CallTarget Targets="cleanobj"/>
+	 <CallTarget Targets="Build"/>
+	 <MakeDir Directories="$(BuildDest)" />
+	</Target>
+
+	<Target Name="cleanobj">
+  	<RemoveDir Directories=".\obj\" ContinueOnError="true"/>
+    </Target>
+	
+	<Target Name="clean">
+    <Delete Files="$(BuildDest)\$(AssemblyName).dll" ContinueOnError="true" />
+    </Target>
+	
+	<ItemGroup>
+		<Compile Include="**\*.cs" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	 	<Reference Include="..\..\..\output\bincore\DecisionsFramework.dll" />
+		<Reference Include="System" />
+		<Reference Include="System.Core" />
+		<Reference Include="System.Data.Services.Client" />
+		<Reference Include="System.Runtime.Serialization" />
+		<Reference Include="System.ServiceModel" />
+		<Reference Include="System.Xml.Linq" />
+		<Reference Include="System.Data.DataSetExtensions" />
+		<Reference Include="Microsoft.CSharp" />
+		<Reference Include="System.Data" />
+		<Reference Include="System.Xml" />
+	</ItemGroup>
+
+	<Import Project="$(LibPath)\msbuild\decisions.net.targets" />
+	
+	<Target Name="AfterBuild">
+		<Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="$(BuildDest)" />
+		<Copy SourceFiles="$(OutputPath)\$(AssemblyName).pdb" DestinationFolder="$(BuildDest)" />
+	</Target>
+	
+</Project>
+
+
